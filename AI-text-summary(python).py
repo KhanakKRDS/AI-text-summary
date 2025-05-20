@@ -2,9 +2,10 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize #used for analyzing words and sentences.
 from collections import Counter
+from flask import Flask, request, render_template #helpful for website
 
-nltk.download("punkt") #used to split the text into sentences
-nltk.download("stopwords") # used to remove words like the, and, is
+##nltk.download("punkt") #used to split the text into sentences
+##nltk.download("stopwords") # used to remove words like the, and, is
 
 def understand_text(text):
     sentences = sent_tokenize(text)
@@ -15,7 +16,7 @@ def understand_text(text):
 
     return sentences, words
 
-text = "Hello, this is a example sentence"
+text =("Hello, this is a example sentence")
 sentences, words = understand_text(text)
 
 print("sentences:", sentences)
@@ -44,7 +45,7 @@ print("sentence scores:", sentence_scores)
 
 def get_summary(sentence_scores, top_n=2):
     sorted_sentences = sorted(sentence_scores.items(), key=lambda x: x[1], reverse = True)
-    summary_sentences = [sentence for sentence, _in sorted_sentences[:top_n]]
+    summary_sentences = [sentence for sentence, in sorted_sentences[:top_n]]
     return"". join(summary_sentences)
 
 summary = get_summary(sentence_scores)
