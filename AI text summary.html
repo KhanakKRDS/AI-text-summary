@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
-<title> Generate Text Summary </title>
-
+     <meta charset="UTF-8">
+     <title> Generate Text Summary </title>
+     <link rel = "stylesheet" href = "https://pyscript.net/alpha/pyscript.css"></link>
+	 <script defer src = "https://pyscript.net/alpha/pyscript.js"></script>
 <!--link for the icons of the website-->
 <link rel="icon" type="image/x-icon" href="C:\Users\fabkh\OneDrive\Pictures\study pics\ai text icon website.png">
 
 </head>
 
 <body>
+     <h1>Generate Text Summary with AI</h1>
 
-<h1>Generate Text Summary</h1>
+		<form method = "post">
+		First Name:
+		<input type= "text" id="first" name="first" size = "30">
+		<br>
+		<p>
 
-First Name:
-<input type= "text" size = "30">
-<br>
-<p>
+		Last Name:
+		<input type= "text" id="first" name="first" size = "30">
+		<br>
+		<p>
 
-Last Name:
-<input type= "text" size = "30">
-<br>
-<p>
+		<h3>Please add your text here</h3>
+		<textarea rows="10" cols="30"></textarea>
+		<br>
+		<p>
 
-<h3>Please add your text here</h3>
-<textarea rows="10" cols="30"></textarea>
-<br>
-<p>
+		<input type="submit" value="Summarize">
 
-<h3>Summarized text</h3>
-<textarea rows="10" cols="30"></textarea>
-<br>
-<p>
-
-<input size = "10" type="submit">
+		<h3>Summarized text</h3>
+		<textarea rows="10" cols="30"></textarea>
+		<br>
+		<p>
+		</form>
 
 </body>
 </html>

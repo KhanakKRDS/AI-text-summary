@@ -7,6 +7,8 @@ from flask import Flask, request, render_template #helpful for website
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
+app = Flask(_name_)
+
 def understand_text(text):
     sentences = sent_tokenize(text)
     stop_words = set(stopwords.words("english"))
@@ -47,6 +49,22 @@ def get_summary(sentence_scores, top_n=2):
     sorted_sentences = sorted(sentence_scores.items(), key=lambda x: x[1], reverse = True)
     summary_sentences = [sentence for sentence, in sorted_sentences[:top_n]]
     return"". join(summary_sentences)
+
+@app.route("/", methods=["GET", "Post"])
+def index():
+    summary, word_feq = "", {}
+
+    if request.method == "Post":
+        text = request.form["text"]
+        sentences, words = understand_text(text)
+        word_freq = important_words(words)
+        sentence_scores = get_sentence_scores(sentences, word_freq)
+        summary = get_summary(sentence_scores)
+
+    return render_template("AI text summary.html", summary = summary, word_freq = word_freq)
+
+if _name_ == "_main_":
+    app.run(debug=True)
 
 summary = get_summary(sentence_scores)
 print("Summary:", summary)
