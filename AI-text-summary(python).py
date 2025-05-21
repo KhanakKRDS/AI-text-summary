@@ -7,14 +7,15 @@ from flask import Flask, request, render_template #helpful for website
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
-app = Flask(_name_)
+app = Flask(__name__, template_folder = "AI text summary")
 
-def understand_text(text):
+def understand_text(text): #Tokenizes the input text into sentences and words, removing stopwords
     sentences = sent_tokenize(text)
     stop_words = set(stopwords.words("english"))
 
-    words = [word_tokenize(sentence.lower()) for sentence in sentences]
+    words = [word_tokenize(sentence.lower()) for sentence in sentences] # each sentence is converted to lowercase
     words = [[word for word in sentence if word.isalnum() and word not in stop_words] for sentence in words]
+    #isalnum(alphanumeric)in above code the non-alphanumeric tokens and stopwords are filtered out then printed
 
     return sentences, words
 
@@ -24,7 +25,8 @@ sentences, words = understand_text(text)
 print("sentences:", sentences)
 print("changes words:", words)
 
-def important_words(words):
+
+def important_words(words): # counts the frequency of each word in processed text
     word_counts = Counter([word for sentence in words for word in sentence])# count how many times the word occurred
     
     return word_counts
@@ -32,7 +34,8 @@ def important_words(words):
 word_freq = important_words(words)
 print("Word Frequency:", word_freq)
 
-def get_sentence_scores(sentences, word_freq):
+
+def get_sentence_scores(sentences, word_freq): #scores each sentence based on the frequency of its words
     sentence_scores = {}
 
     for sentence in sentences:
@@ -45,25 +48,31 @@ sentence_scores = get_sentence_scores(sentences, word_freq)
 print("sentence scores:", sentence_scores)
 
 
-def get_summary(sentence_scores, top_n=2):
+def get_summary(sentence_scores, top_n=2): # Sorts the sentence based on their scores in descending order
+    #and selects the top N sentences to form the summary
     sorted_sentences = sorted(sentence_scores.items(), key=lambda x: x[1], reverse = True)
-    summary_sentences = [sentence for sentence, in sorted_sentences[:top_n]]
+    summary_sentences = [sentence for sentence, _ in sorted_sentences[:top_n]]
     return"". join(summary_sentences)
 
-@app.route("/", methods=["GET", "Post"])
-def index():
-    summary, word_feq = "", {}
 
-    if request.method == "Post":
-        text = request.form["text"]
+@app.route("/", methods=["GET", "POST"]) # handles user input and displays the summary and frequency on a web page
+
+def index(): #on a post request, it retrieves user input, process the text to extract
+    #sentencs and words, calculates their frequencies, and generated a summary. Renders the result on an HTML template
+    summary = ""
+    word_feq = {}
+
+    if request.method == "POST":
+        text = request.form.get("og") #Retrieves user input
+
         sentences, words = understand_text(text)
         word_freq = important_words(words)
         sentence_scores = get_sentence_scores(sentences, word_freq)
         summary = get_summary(sentence_scores)
 
-    return render_template("AI text summary.html", summary = summary, word_freq = word_freq)
+    return render_template("index.html", summary = summary, word_freq = word_freq)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     app.run(debug=True)
 
 summary = get_summary(sentence_scores)

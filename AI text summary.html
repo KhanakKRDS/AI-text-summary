@@ -16,24 +16,24 @@
 
 		<form method = "post">
 		First Name:
-		<input type= "text" id="first" name="first" size = "30">
+		<input type= "text" id="first" name="first" size = "30" required>
 		<br>
 		<p>
 
 		Last Name:
-		<input type= "text" id="first" name="first" size = "30">
+		<input type= "text" id="last" name="last" size = "30" required>
 		<br>
 		<p>
 
 		<h3>Please add your text here</h3>
-		<textarea rows="10" cols="30"></textarea>
+		<textarea rows="10" cols="30" id="og" name="og" required></textarea>
 		<br>
 		<p>
 
 		<input type="submit" value="Summarize">
 
 		<h3>Summarized text</h3>
-		<textarea rows="10" cols="30"></textarea>
+		<textarea rows="10" cols="30" id="new" name="new" {{summary}}></textarea>
 		<br>
 		<p>
 		</form>
