@@ -12,7 +12,6 @@
 <body>
      <h1>Generate Text Summary with AI</h1>
 
-		<form method = "post, get">
 		First Name:
 		<input type= "text" id="first" name="first" size = "30" required>
 		<br>
@@ -22,14 +21,17 @@
 		<input type= "text" id="last" name="last" size = "30" required>
 		<br>
 		<p>
-
+		
+        <form method = "get" action = "/process">
 		<h3>Please add your text here</h3>
 		<textarea rows="10" cols="30" id="og" name="og" required></textarea>
 		<br>
 		<p>
 
 		<input type="submit" value="Summarize">
-
+		</form>
+		
+        <form method = "post" action = "/process">
 		<h3>Summarized text</h3>
 		<textarea rows="10" cols="30" id="new" name="new"> {{summary}}</textarea>
 		<br>

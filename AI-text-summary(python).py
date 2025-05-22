@@ -55,24 +55,27 @@ def get_summary(sentence_scores, top_n=2): # Sorts the sentence based on their s
     return"". join(summary_sentences)
 
 
-@app.route("/", methods=["GET", "POST"]) # handles user input and displays the summary and frequency on a web page
+@app.route("/", methods=["GET"]) # handles user input and displays the summary and frequency on a web page
 
 def index(): #on a post request, it retrieves user input, process the text to extract
     #sentencs and words, calculates their frequencies, and generated a summary. Renders the result on an HTML template
     summary = ""
     word_feq = {}
+    return render_template("AI-text-summary.html")
 
-    if request.method == "GET":
-        text = request.form.get("og") #Retrieves user input
+@app.route("/", methods=["GET", "POST"])
+def process():
+    if request.method == "POST":
+        text = request.form.post("new") #Retrieves user input
+        method = "POST"
 
         sentences, words = understand_text(text)
         word_freq = important_words(words)
         sentence_scores = get_sentence_scores(sentences, word_freq)
         summary = get_summary(sentence_scores)
 
-    if request.method == "POST":
-        new_text = request.form.post("new")
-        
+    else:
+        text = request.form.get("og")
     return render_template("AI-text-summary.html", summary = summary)
 
 summary = get_summary(sentence_scores)
