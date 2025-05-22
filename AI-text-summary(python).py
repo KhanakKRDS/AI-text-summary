@@ -7,7 +7,7 @@ from flask import Flask, request, render_template #helpful for website
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
-app = Flask(__name__, template_folder = "H:\Documents\Computer Assignments\Final Project\AI-text-summary")
+app = Flask(__name__, template_folder = "./AI-text-summary")
 
 def understand_text(text): #Tokenizes the input text into sentences and words, removing stopwords
     sentences = sent_tokenize(text)
@@ -70,7 +70,7 @@ def index(): #on a post request, it retrieves user input, process the text to ex
         sentence_scores = get_sentence_scores(sentences, word_freq)
         summary = get_summary(sentence_scores)
 
-    return render_template("AI text summary.html", summary = summary, word_freq = word_freq)
+    return render_template("AI_text_summary.html", summary = summary)
 
 summary = get_summary(sentence_scores)
 print("Summary:", summary)
