@@ -7,7 +7,7 @@ from flask import Flask, request, render_template #helpful for website
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
-app = Flask(__name__, template_folder = "./AI-text-summary")
+app = Flask(__name__, template_folder = "C:\Khanak\AI-text-summary")
 
 def understand_text(text): #Tokenizes the input text into sentences and words, removing stopwords
     sentences = sent_tokenize(text)
@@ -19,11 +19,11 @@ def understand_text(text): #Tokenizes the input text into sentences and words, r
 
     return sentences, words
 
-text =("Hello, this is a example sentence")
+text =("")
 sentences, words = understand_text(text)
 
-print("sentences:", sentences)
-print("changes words:", words)
+##print("sentences:", sentences)
+##print("changes words:", words)
 
 
 def important_words(words): # counts the frequency of each word in processed text
@@ -32,7 +32,7 @@ def important_words(words): # counts the frequency of each word in processed tex
     return word_counts
 
 word_freq = important_words(words)
-print("Word Frequency:", word_freq)
+##print("Word Frequency:", word_freq)
 
 
 def get_sentence_scores(sentences, word_freq): #scores each sentence based on the frequency of its words
@@ -45,7 +45,7 @@ def get_sentence_scores(sentences, word_freq): #scores each sentence based on th
     return sentence_scores
 
 sentence_scores = get_sentence_scores(sentences, word_freq)
-print("sentence scores:", sentence_scores)
+##print("sentence scores:", sentence_scores)
 
 
 def get_summary(sentence_scores, top_n=2): # Sorts the sentence based on their scores in descending order
@@ -62,7 +62,7 @@ def index(): #on a post request, it retrieves user input, process the text to ex
     summary = ""
     word_feq = {}
 
-    if request.method == "POST":
+    if request.method == "GET":
         text = request.form.get("og") #Retrieves user input
 
         sentences, words = understand_text(text)
@@ -70,13 +70,16 @@ def index(): #on a post request, it retrieves user input, process the text to ex
         sentence_scores = get_sentence_scores(sentences, word_freq)
         summary = get_summary(sentence_scores)
 
-    return render_template("AI_text_summary.html", summary = summary)
+    if request.method == "POST":
+        new_text = request.form.post("new")
+        
+    return render_template("AI-text-summary.html", summary = summary)
 
 summary = get_summary(sentence_scores)
-print("Summary:", summary)
+##print("Summary:", summary)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=3000)
 
 
 
