@@ -7,7 +7,7 @@ from flask import Flask, request, render_template #helpful for website
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
-app = Flask(__name__, template_folder = "C:\Khanak\AI-text-summary")
+app = Flask(__name__, template_folder = "C:\\Khanak\\AI-text-summary")
 
 def understand_text(text): #Tokenizes the input text into sentences and words, removing stopwords
     sentences = sent_tokenize(text)
@@ -40,7 +40,7 @@ def get_sentence_scores(sentences, word_freq): #scores each sentence based on th
 
     for sentence in sentences:
         words = word_tokenize(sentence.lower())
-        sentence_scores[sentence] = sum(word_freq[word] for word in words if word in word_freq)
+        sentence_scores[sentence] = sum(word_freq.get(word, 0) for word in words if word in word_freq) /len(words)
 
     return sentence_scores
 
@@ -63,19 +63,18 @@ def index(): #on a post request, it retrieves user input, process the text to ex
     word_feq = {}
     return render_template("AI-text-summary.html")
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/process", methods=["GET", "POST"])
 def process():
+    summary = ""
     if request.method == "POST":
-        text = request.form.post("new") #Retrieves user input
-        method = "POST"
+        text = request.form.get("new") #Retrieves user input. "form" word is used for post
 
+    else:
+        text = request.args.get("og") # args word is used of get request
         sentences, words = understand_text(text)
         word_freq = important_words(words)
         sentence_scores = get_sentence_scores(sentences, word_freq)
         summary = get_summary(sentence_scores)
-
-    else:
-        text = request.form.get("og")
     return render_template("AI-text-summary.html", summary = summary)
 
 summary = get_summary(sentence_scores)
