@@ -7,7 +7,7 @@ from flask import Flask, request, render_template #helpful for website
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
-app = Flask(__name__, template_folder = "C:\\Khanak\\AI-text-summary")
+app = Flask(__name__, template_folder = "./")
 
 def understand_text(text): #Tokenizes the input text into sentences and words, removing stopwords
     sentences = sent_tokenize(text)
