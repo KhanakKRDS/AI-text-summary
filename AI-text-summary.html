@@ -24,7 +24,8 @@
 		
         <form method = "get" action = "/process">
 		<h3>Please add your text here</h3>
-		<textarea rows="10" cols="30" id="og" name="og" required></textarea>
+		<!-- Keep original text input, fill with previous input if any -->
+		<textarea rows="10" cols="30" id="og" name="og" required> {{og or "" }} </textarea>
 		<br>
 		<p>
 
@@ -33,7 +34,8 @@
 		
         <form method = "post" action = "/process">
 		<h3>Summarized text</h3>
-		<textarea rows="10" cols="30" id="new" name="new"> {{summary}}</textarea>
+		<!-- Make summary textarea readonly to prevent accidental edits -->
+		<textarea rows="10" cols="30" id="new" name="new"> {{summary or ""} </textarea>
 		<br>
 		<p>
 		</form>
