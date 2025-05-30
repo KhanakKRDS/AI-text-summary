@@ -10,7 +10,6 @@ from transformers import pipeline # pre-trained model
 
 app = Flask(__name__, template_folder = "./")
 summarizer = pipeline("summarization", model = "facebook/bart-large-cnn")#BART model
-print(summarizer("This is a test to check if the model loads.", max_length=30))
 
 def understand_text(text): #Tokenizes the input text, convert to lowercase amd removes stopwords
     sentences = sent_tokenize(text)
@@ -73,7 +72,5 @@ def process():
 ##print("Summary:", summary)
 
 if __name__ == "__main__":
-    def check():
-        return "Hello World"
     app.run(host='127.0.0.1', port=3000, debug=True)
 
