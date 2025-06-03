@@ -53,7 +53,7 @@ def get_summary(text): #generates a summary of the text using a pre-trained mode
     summary_ids = model.generate(inputs["input_ids"], max_length=130, min_length=50, do_sample=False) #generate summary
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True) #Decode input
 
-    return summary_ids[0]["summary_text"] #return final summarized text
+    return summary #return final summarized text
 
 @app.route("/", methods=["GET"]) # handles user input and displays the summary a web page
 
