@@ -4,15 +4,14 @@ from nltk.tokenize import sent_tokenize, word_tokenize #used for analyzing words
 from collections import Counter
 from flask import Flask, request, render_template #helpful for website
 from transformers import BartTokenizer, BartForConditionalGeneration# pre-trained model
-from datasets import load_dataset
+
 
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
 app = Flask(__name__, template_folder = "./")
-tokenizer = BartTokenizer.from_pretrained ("facebook/bart-large-cnn") #BART model
-model = BartForConditionalGeneration.from_pretrained("facebook/bart-large-cnn")
-dataset = load_dataset ("cnn_dailymail", "3.0.0") #CNN/Daily Mail for fine-tuning the model
+tokenizer = BartTokenizer.from_pretrained ("./fine-tune(BART)") #BART model
+model = BartForConditionalGeneration.from_pretrained("./fine-tune(BART)")
 
 def understand_text(text): #Tokenizes the input text, convert to lowercase amd removes stopwords
     sentences = sent_tokenize(text) #splitting text into sentences
