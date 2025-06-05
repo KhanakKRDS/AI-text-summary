@@ -1,7 +1,6 @@
 import nltk
 from datasets import load_dataset
 from transformers import BartTokenizer, BartForConditionalGeneration# pre-trained model
-TrainingArguments
 
 tokenizer = BartTokenizer.from_pretrained ("facebook/bart-large-cnn") #BART model
 dataset = load_dataset ("cnn_dailymail", "3.0.0") #CNN/Daily Mail for fine-tuning the model
@@ -44,7 +43,7 @@ trainer.train()
 model.save_pretrained("./fine-tune(BART)")
 tokenizer.save_pretrained("./fine-tune(BART)")
 
-print("model fine-tuned and saved to ./fine-tune(BART)")
+print("model fine-tuned and saved to ./fine-tune(BART)", debug = True)
     
 
     
