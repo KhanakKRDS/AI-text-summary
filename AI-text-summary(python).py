@@ -10,8 +10,8 @@ from transformers import BartTokenizer, BartForConditionalGeneration# pre-traine
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
 app = Flask(__name__, template_folder = "./")
-tokenizer = BartTokenizer.from_pretrained ("./fine-tune(BART)") #BART model
-model = BartForConditionalGeneration.from_pretrained("./fine-tune(BART)")
+tokenizer = BartTokenizer.from_pretrained ("fine-tune(BART)") #BART model
+model = BartForConditionalGeneration.from_pretrained("fine-tune(BART)")
 
 def understand_text(text): #Tokenizes the input text, convert to lowercase amd removes stopwords
     sentences = sent_tokenize(text) #splitting text into sentences

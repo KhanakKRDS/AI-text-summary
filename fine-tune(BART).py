@@ -3,16 +3,16 @@ from datasets import load_dataset
 from transformers import BartTokenizer, BartForConditionalGeneration# pre-trained model
 from transformers import TrainingArguments, Trainer
 
-dataset = load_dataset ("wiki_sum") #wiki_sum for fine-tuning the model
+dataset = load_dataset ("d0rj/wikisum") #wiki_sum for fine-tuning the model
 subset = dataset["train"].select(range(10000)) #select 10000 examples instead of full dataset
 tokenizer = BartTokenizer.from_pretrained ("facebook/bart-large-cnn") #BART model
 
 def preprocess(examples):
-    inputs = [article for article in examples["text"]]
+    inputs = examples["article"]
     #truncation- limiting the number of digits right of the decimal point
-    model_inputs = tokenizer(examples["text"], max_length=1024, truncation=True, padding = "max_length")
+    model_inputs = tokenizer(inputs, max_length=1024, truncation=True, padding = "max_length")
     with tokenizer.as_target_tokenizer(): #tokenizing summaries as labels
-        labels = tokenizer(examples["highlights"], max_length=128, truncation=True, padding = "max_length")
+        labels = tokenizer(examples["summary"], max_length=128, truncation=True, padding = "max_length")
         model_inputs["labels"] = labels["input_ids"]
         return model_inputs
 
@@ -22,7 +22,7 @@ model = BartForConditionalGeneration.from_pretrained("facebook/bart-large-cnn")
 
 #defining training prameters
 training_args = TrainingArguments(
-    output_dir = "./bart_summarizer",
+    output_dir = "./", # saves mdel checkpoints and final model (place where this script is saved)
     eval_strategy = "epoch",
     learning_rate = 3e-5,
     per_device_train_batch_size = 4,
@@ -31,7 +31,7 @@ training_args = TrainingArguments(
     save_total_limit = 2,
     num_train_epochs = 3,
     #predict_with_generate = True,
-    logging_dir = "./logs",
+    logging_dir = "./logs", #saves logs for monitoring training(via TensorBoard)
     logging_steps = 100,
     )
 
@@ -44,7 +44,8 @@ trainer = Trainer(
     tokenizer = tokenizer,
     )
 
-trainer.train()
+trainer.train() #train the model
+#save the fine-tuned model
 model.save_pretrained("./fine-tune(BART)")
 tokenizer.save_pretrained("./fine-tune(BART)")
 
