@@ -2,6 +2,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize #used for analyzing words and sentences.
 from collections import Counter
+from sklearn.feature_extraction.text import TfidVectorize # TF_IDF for better word importance
 from flask import Flask, request, render_template #helpful for website
 from transformers import BartTokenizer, BartForConditionalGeneration# pre-trained model
 
@@ -14,17 +15,20 @@ tokenizer = BartTokenizer.from_pretrained ("fine-tune(BART)") #BART model
 model = BartForConditionalGeneration.from_pretrained("fine-tune(BART)")
 
 def understand_text(text): #Tokenizes the input text, convert to lowercase amd removes stopwords
-    sentences = sent_tokenize(text) #splitting text into sentences
+    sentences = sent_tokenize(text) #splitt text into sentences
     stop_words = set(stopwords.words("english")) #define common stopwords
     words = [
         [word for word in word_tokenize(sentence.lower()) if word.isalnum and word not in stop_words]
-        for sentence in sentences
+        for sentence in sentences #filter out non-alphanumeric tokens and stopwords
     ]#isalnum(alphanumeric)in above code the non-alphanumeric tokens and stopwords are filtered out then printed
 
     return sentences, words #returns processed sentences and words
 
 
-def important_words(words): # counts the frequency of each word in processed text, identify most significant terms
+def important_words(words): #uses TF_IDF for better identification of important words rather than word frequency
+    corpus = ["". join(sentence) for sentence in words] #convert sentences into a text corpus
+    vectorizer = TfidfVectorizer()
+    tfidf_matrix = TfidfVectorizer.fit_transform(corpus) 
     return Counter([word for sentence in words for word in sentence])# count how many times the word occurred
 
 def get_sentence_scores(sentences, word_freq): #scores each sentence based on the frequency of its words, providing a
