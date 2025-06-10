@@ -6,13 +6,12 @@ from sklearn.feature_extraction.text import TfidfVectorizer # TF_IDF for better 
 from flask import Flask, request, render_template #helpful for website
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM# pre-trained model
 
-
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
 app = Flask(__name__, template_folder = "./")
-tokenizer = AutoTokenizer.from_pretrained ("./My-tune-model./fine-tune-BART.py") #BART model
-model = AutoModelForSeq2SeqLM.from_pretrained("./My-tune-model./fine-tune-BART.py")
+tokenizer = AutoTokenizer.from_pretrained ("My-tune-model") #BART model
+model = AutoModelForSeq2SeqLM.from_pretrained("My-tune-model")
 
 def understand_text(text): #Tokenizes the input text, convert to lowercase amd removes stopwords
     sentences = sent_tokenize(text) #splitt text into sentences
