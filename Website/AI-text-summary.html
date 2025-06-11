@@ -23,7 +23,7 @@
         <form method = "POST" action = "/process">
 		<h3>Please add your text here</h3>
 		<!-- Keep original text input, fill with previous input if any -->
-		<textarea rows="10" cols="30" id="og" name="og" required> {{og}} </textarea>
+		<textarea rows="10" cols="30" id="og" name="og" required> {{og|trim}} </textarea>
 		<br>
 		<p>
 
@@ -32,11 +32,10 @@
 		
 		<h3>Summarized text</h3>
 		<!-- Make summary textarea readonly to prevent accidental edits -->
-		<textarea rows="10" cols="30" readonly> {{summary}} </textarea>
+		<textarea rows="10" cols="30" readonly> {{summary|trim}} </textarea>
 	
 		<br>
 		<p>
-		</form>
 
 </body>
 </html>

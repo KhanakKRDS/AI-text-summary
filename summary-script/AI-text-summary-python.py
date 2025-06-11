@@ -27,8 +27,8 @@ def understand_text(text): #Tokenizes the input text, convert to lowercase amd r
 def important_words(words): #uses TF_IDF for better identification of important words rather than word frequency
     corpus = ["".join(sentence) for sentence in words] #convert sentences into a text corpus
     vectorizer = TfidfVectorizer()
-    tfidf_matrix = Vectorizer.fit_transform(corpus)
-    feature_names = vectorizer.get-feature_names_out()
+    tfidf_matrix = vectorizer.fit_transform(corpus)
+    feature_names = vectorizer.get_feature_names_out()
     word_freq = dict(zip(feature_nmaes, tfidf_matrix.sum(axis=0).A1)) #get word importance based on TF_IDF
     
     return Counter(word_freq) #return a frequency count based on importance
