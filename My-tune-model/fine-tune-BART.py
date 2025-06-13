@@ -15,7 +15,7 @@ from sklearn.model_selection import train_test_split
 ##from transformers import Seq2SeqTrainer
 
 #load and subset he dataset
-dataset = load_dataset ("d0rj/wikisum", cache_dir = "/content") #wiki_sum for fine-tuning the model
+dataset = load_dataset ("d0rj/wikisum")#, cache_dir = "/content") #wiki_sum for fine-tuning the model
 subset = dataset["train"].select(range(10000)) #select 10000 examples instead of full dataset(reduce memory usage)
 train_idx, val_idx = train_test_split(range(len(subset)), test_size = 0.2, random_state = 42)
 subset_train = subset.select(train_idx)
