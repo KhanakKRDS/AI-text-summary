@@ -17,7 +17,7 @@ from sklearn.model_selection import train_test_split
 #load and subset he dataset
 dataset = load_dataset ("d0rj/wikisum")#, cache_dir = "/content") #wiki_sum for fine-tuning the model
 subset = dataset["train"].select(range(10000)) #select 10000 examples instead of full dataset(reduce memory usage)
-train_idx, val_idx = train_test_split(range(len(subset)), test_size = 0.2, random_state = 42)
+train_idx, val_idx = train_test_split(range(len(subset)), test_size = 0.5, random_state = 42)
 subset_train = subset.select(train_idx)
 subset_val = subset.select(val_idx)
 
@@ -28,7 +28,7 @@ model = BartForConditionalGeneration.from_pretrained("facebook/bart-large-cnn") 
 #tokenization (dynamically adjusts padding and trunction)
 def preprocess(examples):
     #truncation - limiting the number of digits right of the decimal point
-    model_inputs = tokenizer(examples["article"], max_length = 1024, truncation=True, padding = "longest")
+    model_inputs = tokenizer(examples["article"], max_length = 512, truncation=True, padding = "longest")
     labels = tokenizer(examples["summary"], max_length = 256, truncation=True, padding = "longest")
     model_inputs["labels"] = labels["input_ids"]
     return model_inputs
@@ -44,9 +44,9 @@ training_args = Seq2SeqTrainingArguments(
     eval_strategy = "epoch", #evaluate after each epoch
     save_strategy = "epoch",
     learning_rate = 3e-5, #fine-tuning learning rates
-    per_device_train_batch_size = 4,#small batch size to prevent memory overload
-    gradient_accumulation_steps = 8, #accumulate gradients for larger effective batches
-    per_device_eval_batch_size = 4, #evaluation batch size
+    per_device_train_batch_size = 2,#small batch size to prevent memory overload
+    gradient_accumulation_steps = 16, #accumulate gradients for larger effective batches
+    per_device_eval_batch_size = 2, #evaluation batch size
     weight_decay = 0.01, #regularization to prevent overfitting
     save_total_limit = 2, #limits number of saved checkpoints
     num_train_epochs = 3, #number of training epochs
