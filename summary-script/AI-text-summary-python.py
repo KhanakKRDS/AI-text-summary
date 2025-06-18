@@ -10,8 +10,8 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM# pre-trained model
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
 app = Flask(__name__, template_folder = "./")
-tokenizer = AutoTokenizer.from_pretrained ("../Trained-model") #BART model
-model = AutoModelForSeq2SeqLM.from_pretrained("../Trained-model")
+tokenizer = AutoTokenizer.from_pretrained ("../My-tune-model-og./My-tune-model-og") #BART model
+model = AutoModelForSeq2SeqLM.from_pretrained("../My-tune-model-og./My-tune-model-og")
 
 def understand_text(text): #Tokenizes the input text, convert to lowercase amd removes stopwords
     sentences = sent_tokenize(text) #splitt text into sentences
