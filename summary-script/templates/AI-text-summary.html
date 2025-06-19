@@ -15,26 +15,13 @@
 		 margin: 0 20px; <!-- Adds spacing between the two boxes --> 
 		 width: 45%;
 	 }
-	 <img src="https://www.printasia.in/media/catalog/product/c/r/crame_1.png" alt="Background" style="width: 100%; height: auto;">
 
      textarea {
-	     position: absolute;
-		 top: 20%;
-		 left: 10%;
-		 width: 60%;
-		 height: 200px;
 	     resize: none;
 	     padding: 20px;
-		 font-size: 1rem;
-		 background-color: rgba(255, 255, 0.8);
-		 color: #000;
-		 border: 1px solid #ccc;
-		 border-radius: 8px;
-		 
-	 input[type="submit"] {
-	     font-size: 1.2rem;
-		 padding: 12px 24px;
+		 color: #ffffdb;
 	 }
+		
 	 h3{
 	     font-size: 30px;
 	     text-align: center;
@@ -53,21 +40,18 @@
 		First Name:
 		<input type= "text" id="first" name="first" size = "30" required>
 		<br>
-		<p>
 
 		Last Name:
 		<input type= "text" id="last" name="last" size = "30" required>
 		<br>
-		<p>
+		
 <div class = "container">
      <div>		
         <form method = "POST" action = "/process">
 		<h3>Please add your text here</h3>
 		<!-- Keep original text input, fill with previous input if any -->
-		<textarea rows="30" cols="80" id="og" name="og" required> {{og|trim}} </textarea>
+		<textarea rows="30" cols="80" id="og" name="og" required>{{og|trim}}</textarea>
 		<br>
-		<p>
-	 
 
 		<input type="submit" value="Summarize">
 		</form>
@@ -76,11 +60,10 @@
      <div>	
 		<h3>Summarized text</h3>
 		<!-- Make summary textarea readonly to prevent accidental edits -->
-		<textarea rows="30" cols="80" readonly> {{summary|trim}} </textarea>
+		<textarea rows="30" cols="80" readonly>{{summary|trim}}</textarea>
 	 </div>
 </div>
 		<br>
-		<p>
 
 </body>
 </html>

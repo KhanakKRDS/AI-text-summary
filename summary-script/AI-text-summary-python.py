@@ -10,8 +10,8 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM# pre-trained model
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
 app = Flask(__name__, template_folder = "./")
-tokenizer = AutoTokenizer.from_pretrained ("../My-tune-model-og./My-tune-model-og") #BART model
-model = AutoModelForSeq2SeqLM.from_pretrained("../My-tune-model-og./My-tune-model-og")
+tokenizer = AutoTokenizer.from_pretrained ("../My-tune-model-og/My-tune-model-og") #BART model
+model = AutoModelForSeq2SeqLM.from_pretrained("../My-tune-model-og/My-tune-model-og")
 
 def understand_text(text): #Tokenizes the input text, convert to lowercase amd removes stopwords
     sentences = sent_tokenize(text) #splitt text into sentences
@@ -29,7 +29,7 @@ def important_words(words): #uses TF_IDF for better identification of important 
     vectorizer = TfidfVectorizer()
     tfidf_matrix = vectorizer.fit_transform(corpus)
     feature_names = vectorizer.get_feature_names_out()
-    word_freq = dict(zip(feature_nmaes, tfidf_matrix.sum(axis=0).A1)) #get word importance based on TF_IDF
+    word_freq = dict(zip(feature_names, tfidf_matrix.sum(axis=0).A1)) #get word importance based on TF_IDF
     
     return Counter(word_freq) #return a frequency count based on importance
 
@@ -43,6 +43,7 @@ def get_sentence_scores(sentences, word_freq): #scores each sentence based on th
     return sentence_scores #returns a dictionary of sentence scores
 
 def get_summary(text): #generates a summary of the text using a pre-trained model, combined with extractive summarization.
+    print("Generating summary...")
     if not text or text.strip() == "":
         return "" #if input text is empty, return an empty summary
     sentences, words =  understand_text(text) #process text
@@ -79,7 +80,9 @@ def index(): #on a post request, it retrieves user input, process the text to ex
 def process(): #handles user input, process the text, and displays the summary
     try:
         original_text = request.form.get("og", "").strip() #get input from the webpage
+        print(f"Original text received: {original_text[:30]}...")
         summary = get_summary(original_text) if original_text else "Invalid input" #generate summary or return an error
+        print(f"Summary generated: {summary[:30]}...")
     except Exception as e:
         summary = f"Error: {str(e)}" #handle unexpected errors
     return render_template("AI-text-summary.html", og = original_text, summary = summary)
