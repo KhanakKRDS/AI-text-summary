@@ -10,10 +10,13 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM# pre-trained model
 ##nltk.download("punkt") #used to split the text into sentences
 ##nltk.download("stopwords") # used to remove words like the, and, is
 
+
 print("Loading model...")
 tokenizer = AutoTokenizer.from_pretrained ("../My-tune-model-og/My-tune-model-og") #BART model
 model = AutoModelForSeq2SeqLM.from_pretrained("../My-tune-model-og/My-tune-model-og")
 print("Model loaded.")
+
+app = Flask(__name__, template_folder="templates")
 
 def understand_text(text): #Tokenizes the input text, convert to lowercase amd removes stopwords
     sentences = sent_tokenize(text) #splitt text into sentences
@@ -27,7 +30,7 @@ def understand_text(text): #Tokenizes the input text, convert to lowercase amd r
 
 
 def important_words(words): #uses TF_IDF for better identification of important words rather than word frequency
-    corpus = ["".join(sentence) for sentence in words] #convert sentences into a text corpus
+    corpus = [" ".join(sentence) for sentence in words] #convert sentences into a text corpus
     vectorizer = TfidfVectorizer()
     tfidf_matrix = vectorizer.fit_transform(corpus)
     feature_names = vectorizer.get_feature_names_out()
@@ -45,7 +48,7 @@ def get_sentence_scores(sentences, word_freq):#scores each sentence based on the
     return sentence_scores #returns a dictionary of sentence scores
 
 def get_summary(text): #generates a summary of the text using a pre-trained model, combined with extractive summarization.
-    if not text or text.strip() == "":
+    if text.strip() == "":
         return "" #if input text is empty, return an empty summary
     sentences, words =  understand_text(text) #process text
     word_freq = important_words(words) #identify important words
@@ -53,7 +56,7 @@ def get_summary(text): #generates a summary of the text using a pre-trained mode
     
     #Extractive summarization (select top 5 important sentences)
     top_sentences = sorted(sentence_scores, key=sentence_scores.get, reverse=True)[:5] #select top-ranked sentences
-    important_text = "".join(top_sentences) #prepare input for abstractive summarization
+    important_text = " ".join(top_sentences) #prepare input for abstractive summarization
 
     #Abstractive summarization (using BART model)
     inputs = tokenizer(important_text, return_tensors="pt", max_length=1024, truncation=True) #tokenize input
@@ -71,13 +74,7 @@ def get_summary(text): #generates a summary of the text using a pre-trained mode
 
     return summary #return final summarized text
 
-# Set base directory to absolute path of current file
-base_dir = os.path.dirname(os.path.abspath(__file__))
-template_dir = os.path.join(base_dir, "templates")
-
-app = Flask(__name__, template_folder=template_dir)
-@app.route("/", methods=["GET"]) # handles user input and displays the summary a web page
-
+@app.route("/", methods=["GET"])
 def index(): #on a post request, it retrieves user input, process the text to extract
     #sentencs and words, calculates their frequencies, and generated a summary. Renders the result on an HTML template
     print(">>> Home page accessed")
