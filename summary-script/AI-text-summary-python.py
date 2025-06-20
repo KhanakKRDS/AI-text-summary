@@ -94,5 +94,5 @@ def process(): #handles user input, process the text, and displays the summary
     return render_template("AI-text-summary.html", og = original_text, summary = summary)
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=3000, debug=True) #start web server
+    app.run(host='127.0.0.1', port=8080, debug=True) #start web server
 
