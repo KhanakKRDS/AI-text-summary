@@ -60,6 +60,9 @@ The model was trained in Google Colab using a dataset of 500 text samples for 2 
 <h3>Inspiration</h3>
 <p>This project was created to explore how AI systems like ChatGPT perform text summarization. It helped strengthen my understanding of machine learning, NLP, and backend–frontend integration.</p>
 
+<h3>Project Status</h3>.
+<p>This project runs locally and is not deployed for public use. Deployment will be explored in future updates.</p>.
+
 
 
 
