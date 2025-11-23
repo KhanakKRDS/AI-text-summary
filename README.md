@@ -8,6 +8,9 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
   <img src="example of website.jpg" width="600">
 </a>
 
+<h3>Gathered Information during this project</h3>
+<a href="https://docs.google.com/document/d/1xIGNd6u25Gy2oBSU1mI7Ktt_fssCuAl1yfmignm-jNk/edit?usp=drive_link" target="_blank">Click here to watch the demo video
+
 <h3>Features</h3>
 <ul>
   <li>Simple UI</li>
