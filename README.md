@@ -7,3 +7,26 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
   <li>Simple UI</li>
   <li>Works in the browser</li>
 </ul>
+
+<h3>Languages Used</h3>
+<ul>
+  <li>Python</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Javascript</li>
+</ul>
+
+<h3>Explored Topics</h3>
+<ul>
+  <li>Machine Learning</li>
+  <li>Deep learning</li>
+  <li>Neural Network Graphs</li>
+    <ol>
+        <li>Recurrent Neural Network (RNN)</li>
+        <li>Convolutional Neural Network (CNN)</li>
+        <li>Graph Neural Networks (GNNs)</li>
+        <li>Transformers</li>
+      </ol>
+</ul>
+
+
