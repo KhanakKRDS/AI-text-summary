@@ -12,7 +12,8 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
 <a href="https://docs.google.com/document/d/1xIGNd6u25Gy2oBSU1mI7Ktt_fssCuAl1yfmignm-jNk/edit?usp=drive_link" target="_blank">Click here to watch the demo video
 </a>
 <br>
-
+<br>
+<br>
 
 <h3>Features</h3>
 <ul>
