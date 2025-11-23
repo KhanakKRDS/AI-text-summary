@@ -1,6 +1,7 @@
 <h1>AI Text Summarization</h1>
 
-It is a simple AI Text Summarization website that reduces long paragraphs into simpler and shorter texts. But, not yet accessible for public use.
+This is a simple AI Text Summarization website that converts long paragraphs into clear and concise summaries. 
+This project is currently not accessible for public use, because it requires Python backend to be manually run locally, and as my device is the server.
 
 <h3>Video of my website</h3>
 <a href="https://drive.google.com/file/d/1TxexYnG8n4Pj5FqD7060iiDppa_4wbC2/view?usp=drive_link" target="_blank">Click here to watch the demo video
@@ -9,7 +10,7 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
 </a>
 
 <h3>Gathered Information during this project</h3>
-<a href="https://docs.google.com/document/d/1xIGNd6u25Gy2oBSU1mI7Ktt_fssCuAl1yfmignm-jNk/edit?usp=drive_link" target="_blank">Click here to watch the demo video
+<a href="https://docs.google.com/document/d/1xIGNd6u25Gy2oBSU1mI7Ktt_fssCuAl1yfmignm-jNk/edit?usp=drive_link" target="_blank">Click here to view the gathered information and notes from this project
 </a>
 <br>
 <br>
@@ -17,13 +18,14 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
 
 <h3>Features</h3>
 <ul>
-  <li>Simple UI</li>
-  <li>Works in the browser</li>
+  <li>Simple and clean user interface</li>
+  <li>Browser-based interface connected to a Python backend</li>
+  <li>Custom machine learning model for text summarization</li>
 </ul>
 
 <h3>Languages Used</h3>
 <ul>
-  <li>Python</li>
+  <li>Python (Flask)</li>
   <li>HTML</li>
   <li>CSS</li>
   <li>Javascript</li>
@@ -33,22 +35,30 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
 <ul>
   <li>Machine Learning</li>
   <li>Deep learning</li>
-  <li>Neural Network Graphs</li>
+  <li>Neural Network Architectures</li>
     <ul>
-        <dd>- Recurrent Neural Network (RNN)</dd>
-        <dd>- Convolutional Neural Network (CNN)</dd>
+        <dd>- Recurrent Neural Network (RNNs)</dd>
+        <dd>- Convolutional Neural Network (CNNs)</dd>
         <dd>- Graph Neural Networks (GNNs)</dd>
         <dd>- Transformers</dd>
       </ul>
 </ul>
 
 
-<h3>How everthing works together</h3>
-<p>Firstly it performs phrase segmentation, work tokenization, eliminating stop-words, lemmatization, sentence selection, then uses my trained model to generate new sentences and rearrange them. I trained the model in Google Colab using 500 datasets and for 2 epochs, and connected my Python backend with HTML frontend using Flask.</p>
+<h3>How the system works</h3>
+<ul>
+  <li>Phrase segmentation</li>
+  <li>Word tokenization</li>
+  <li>Stop-word removal</li>
+  <li>Lemmatization</li>
+  <li>Sentence scoring and selection</li>
+  <li>Sending sentences to model</li>
+  <li>Summary generation using a trained model</li>
+</ul>
+The model was trained in Google Colab using a dataset of 500 text samples for 2 epochs. The backend (Python) communicates with the frontend (HTML/CSS/JS) using Flask.
 
-<h3>Inspired by</h3>
-<p>I did this because I was curious to know how Chat-GPT summarizes text. This was a learning based project to strengthen my technical skills and stay up to date with current AI advances.</p>
-
+<h3>Inspiration</h3>
+<p>This project was created to explore how AI systems like ChatGPT perform text summarization. It helped strengthen my understanding of machine learning, NLP, and backend–frontend integration.</p>
 
 
 
