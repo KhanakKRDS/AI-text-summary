@@ -21,12 +21,12 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
   <li>Machine Learning</li>
   <li>Deep learning</li>
   <li>Neural Network Graphs</li>
-    <ol>
+    <ul>
         <li>Recurrent Neural Network (RNN)</li>
         <li>Convolutional Neural Network (CNN)</li>
         <li>Graph Neural Networks (GNNs)</li>
         <li>Transformers</li>
-      </ol>
+      </ul>
 </ul>
 
 
