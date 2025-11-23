@@ -4,6 +4,7 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
 
 <h3>Video of my website</h3>
 <a href="https://drive.google.com/file/d/1TxexYnG8n4Pj5FqD7060iiDppa_4wbC2/view?usp=drive_link" target="_blank">Click here to watch the demo video
+  <br>
   <img src="example of website.jpg" width="600">
 </a>
 
