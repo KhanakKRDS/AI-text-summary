@@ -2,6 +2,11 @@
 
 It is a simple AI Text Summarization website that reduces long paragraphs into simpler and shorter texts. But, not yet accessible for public use.
 
+<h3>Video of my website summarizing</h3>
+<video controls width="600" height="400">
+        <source src="C:\Users\fabkh\Downloads\AI Text Summarization.mp4" type="video/mp4">
+</video>
+
 <h3>Features</h3>
 <ul>
   <li>Simple UI</li>
