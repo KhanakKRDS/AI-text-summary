@@ -22,10 +22,10 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
   <li>Deep learning</li>
   <li>Neural Network Graphs</li>
     <ul>
-        <li>Recurrent Neural Network (RNN)</li>
-        <li>Convolutional Neural Network (CNN)</li>
-        <li>Graph Neural Networks (GNNs)</li>
-        <li>Transformers</li>
+        <dd>Recurrent Neural Network (RNN)</dd>
+        <dd>Convolutional Neural Network (CNN)</dd>
+        <dd>Graph Neural Networks (GNNs)</dd>
+        <dd>Transformers</dd>
       </ul>
 </ul>
 
