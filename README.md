@@ -4,7 +4,7 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
 
 <h3>Video of my website summarizing</h3>
 <video width="600" height="400" controls>
-        <source src="C:\Users\fabkh\Downloads\AI Text Summarization.mp4" type="video/mp4">
+        <source src="C:\Users\fabkh\OneDrive\Documents\Khanak Computer Assignments\Github\AI-text-summary\AI Text Summarization.mp4" type="video/mp4">
         Your browser does not support the video tag.
 </video>
 
