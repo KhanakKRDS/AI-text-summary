@@ -43,3 +43,13 @@ It is a simple AI Text Summarization website that reduces long paragraphs into s
 </ul>
 
 
+<h3>How everthing works together</h3>
+<p>Firstly it performs phrase segmentation, work tokenization, eliminating stop-words, lemmatization, sentence selection, then uses my trained model to generate new sentences and rearrange them. I trained the model in Google Colab using 500 datasets and for 2 epochs, and connected my Python backend with HTML frontend using Flask.</p>
+
+<h3>Inspired by</h3>
+<p>I did this because I was curious to know how Chat-GPT summarizes text. This was a learning based project to strengthen my technical skills and stay up to date with current AI advances.</p>
+
+
+
+
+
