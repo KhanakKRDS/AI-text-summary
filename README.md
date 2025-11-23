@@ -3,10 +3,7 @@
 It is a simple AI Text Summarization website that reduces long paragraphs into simpler and shorter texts. But, not yet accessible for public use.
 
 <h3>Video of my website</h3>
-<video width="600" height="400" controls>
-        <source src="C:\Users\fabkh\OneDrive\Documents\Khanak Computer Assignments\Github\AI-text-summary\AI Text Summarization.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-</video>
+<a href="https://drive.google.com/file/d/1TxexYnG8n4Pj5FqD7060iiDppa_4wbC2/view?usp=drive_link" target="_blank">Click here to watch the demo video</a>
 
 <h3>Features</h3>
 <ul>
