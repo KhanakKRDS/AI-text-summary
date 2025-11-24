@@ -1,15 +1,15 @@
 <h1>AI Text Summarization</h1>
 
 This is a simple AI Text Summarization website that converts long paragraphs into clear and concise summaries. 
-This project is currently not accessible for public use, because it requires Python backend to be manually run locally, and as my device is the server.
+This project is currently not accessible for public use because it requires a Python backend to be manually run on a local machine.
 
-<h3>Video of my website</h3>
+<h3>Video Of My Website</h3>
 <a href="https://drive.google.com/file/d/1TxexYnG8n4Pj5FqD7060iiDppa_4wbC2/view?usp=drive_link" target="_blank">Click here to watch the demo video
   <br>
   <img src="example of website.jpg" width="600">
 </a>
 
-<h3>Gathered Information during this project</h3>
+<h3>Gathered Information During This Project</h3>
 <a href="https://docs.google.com/document/d/1xIGNd6u25Gy2oBSU1mI7Ktt_fssCuAl1yfmignm-jNk/edit?usp=drive_link" target="_blank">Click here to view the gathered information and notes from this project
 </a>
 <br>
@@ -28,13 +28,13 @@ This project is currently not accessible for public use, because it requires Pyt
   <li>Python (Flask)</li>
   <li>HTML</li>
   <li>CSS</li>
-  <li>Javascript</li>
+  <li>JavaScript</li>
 </ul>
 
 <h3>Explored Topics</h3>
 <ul>
   <li>Machine Learning</li>
-  <li>Deep learning</li>
+  <li>Deep Learning</li>
   <li>Neural Network Architectures</li>
     <ul>
         <dd>- Recurrent Neural Network (RNNs)</dd>
@@ -45,20 +45,20 @@ This project is currently not accessible for public use, because it requires Pyt
 </ul>
 
 
-<h3>How the system works</h3>
+<h3>How The System Works</h3>
 <ul>
   <li>Phrase segmentation</li>
   <li>Word tokenization</li>
   <li>Stop-word removal</li>
   <li>Lemmatization</li>
   <li>Sentence scoring and selection</li>
-  <li>Sending sentences to model</li>
+  <li>Sending processed sentences to the model</li>
   <li>Summary generation using a trained model</li>
 </ul>
 The model was trained in Google Colab using a dataset of 500 text samples for 2 epochs. The backend (Python) communicates with the frontend (HTML/CSS/JS) using Flask.
 
 <h3>Inspiration</h3>
-<p>This project was created to explore how AI systems like ChatGPT perform text summarization. It helped strengthen my understanding of machine learning, NLP, and backend–frontend integration.</p>
+<p>This project was created to explore how AI systems like ChatGPT perform text summarization. It helped strengthen my understanding of Machine Learning, NLP, and backend–frontend integration.</p>
 
 <h3>Project Status</h3>
 <p>This project runs locally and is not deployed for public use. Deployment will be explored in future updates.</p>
