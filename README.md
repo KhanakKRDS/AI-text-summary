@@ -5,9 +5,8 @@ This project is currently not accessible for public use because it requires a Py
 
 <h3>Video Of My Website</h3>
 <a href="https://drive.google.com/file/d/18sYcecI5JuXVG080QoEqlwnc5kVeHUyn/view?usp=drive_link" target="_blank">Click here to watch the demo video
-  <br>
-  <img src="example of website.jpg" width="600">
 </a>
+<br>
 
 <h3>Gathered Information During This Project</h3>
 <a href="https://docs.google.com/document/d/1xIGNd6u25Gy2oBSU1mI7Ktt_fssCuAl1yfmignm-jNk/edit?usp=drive_link" target="_blank">Click here to view the gathered information and notes from this project
