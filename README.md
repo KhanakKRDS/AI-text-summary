@@ -4,7 +4,7 @@ This is a simple AI Text Summarization website that converts long paragraphs int
 This project is currently not accessible for public use because it requires a Python backend to be manually run on a local machine.
 
 <h3>Video Of My Website</h3>
-<a href="https://drive.google.com/file/d/1UOF5f3bwdir4HanJd7s6SJBYo9-6MGwP/view?usp=drive_link" target="_blank">Click here to watch the demo video
+<a href="https://drive.google.com/file/d/18sYcecI5JuXVG080QoEqlwnc5kVeHUyn/view?usp=drive_link" target="_blank">Click here to watch the demo video
   <br>
   <img src="example of website.jpg" width="600">
 </a>
